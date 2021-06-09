@@ -28,9 +28,24 @@
     "hasChildren": false
   },
   {
-    "question": "",
+    "question": "test question 3",
 
-    "dataType": "",
+    "dataType": "radio",
+
+    "dataTypeValue": "Yes,No",
+
+    "order": 3,
+
+    "isRequired": true,
+
+    "selectedOption": "Yes",
+
+    "hasChildren": false
+  },
+  {
+    "question": "Reason",
+
+    "dataType": "text",
 
     "staticMessage": "This option should be selected when you need time off for your own injury or illness. If you need time off for a different reason, please go back and select a different leave of absence reason.",
 

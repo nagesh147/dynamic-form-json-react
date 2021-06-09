@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './styles.css'
 import data from '../../data.json'
 import Radio from '../elements/Radio'
+import Text from '../elements/Text'
 
 export default function EntryForm() {
   const [jsonData, setJsonData] = useState(data)
@@ -14,7 +15,7 @@ export default function EntryForm() {
       nextFormItem &&
       nextFormItem.map((formItem) => {
         return (
-          <div className="entryForm">
+          <div className="innerForm">
             <label>{formItem.question}</label>
             {renderElement(formItem)}
           </div>
@@ -34,6 +35,15 @@ export default function EntryForm() {
             orderHandler={orderHandler}
           />
         )
+      case 'text':
+        return (
+          <Text
+            jsonData={jsonData}
+            formItem={formItem}
+            currentOrder={formItem.order}
+            orderHandler={orderHandler}
+          />
+        )
       default:
         return
     }
@@ -45,7 +55,7 @@ export default function EntryForm() {
       .filter((i) => i.order === 1)
       .map((formItem) => {
         return (
-          <div className="entryForm">
+          <div className="entryForm" key={formItem.question}>
             <label>{formItem.question}</label>
             {renderElement(formItem)}
           </div>
