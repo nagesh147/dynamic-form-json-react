@@ -3,6 +3,7 @@ import './styles.css'
 import data from '../../data.json'
 import Radio from '../elements/Radio'
 import Text from '../elements/Text'
+import Checkbox from '../elements/Checkbox'
 
 export default function EntryForm() {
   const [jsonData, setJsonData] = useState(data)
@@ -15,7 +16,7 @@ export default function EntryForm() {
       nextFormItem &&
       nextFormItem.map((formItem) => {
         return (
-          <div className="innerForm">
+          <div className="innerFormItem">
             <label>{formItem.question}</label>
             {renderElement(formItem)}
           </div>
@@ -29,6 +30,15 @@ export default function EntryForm() {
       case 'radio':
         return (
           <Radio
+            jsonData={jsonData}
+            formItem={formItem}
+            currentOrder={formItem.order}
+            orderHandler={orderHandler}
+          />
+        )
+      case 'picklist':
+        return (
+          <Checkbox
             jsonData={jsonData}
             formItem={formItem}
             currentOrder={formItem.order}

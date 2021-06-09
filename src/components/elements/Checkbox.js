@@ -1,22 +1,22 @@
-import React, { useContext } from 'react'
-import { FormContext } from '../../FormContext'
-const Checkbox = ({ field_id, field_label, field_value }) => {
-  const { handleChange } = useContext(FormContext)
+import React, { useState, useEffect } from 'react'
+import { useForm } from 'react-hook-form'
 
-  return (
-    <div className="mb-3 form-check">
-      <input
-        type="checkbox"
-        className="form-check-input"
-        id="exampleCheck1"
-        checked={field_value}
-        onChange={(event) => handleChange(field_id, event)}
-      />
-      <label className="form-check-label" htmlFor="exampleCheck1">
-        {field_label}
-      </label>
-    </div>
-  )
+const Checkbox = ({ formItem, orderHandler, currentOrder }) => {
+  const { register } = useForm()
+  console.log(formItem)
+  return formItem.dataTypeValue.split(',').map((formItem) => {
+    return (
+      <div>
+        <input
+          type={'checkbox'}
+          className="mbt5"
+          // value={formItem.dataTypeValue.split(',')[0]}
+          {...register('orderOne', { required: formItem.isRequired })}
+        />
+        <label>{formItem}</label>
+      </div>
+    )
+  })
 }
 
 export default Checkbox
